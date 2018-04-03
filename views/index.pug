@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container
+    .jumbotron.text-center
+      h2 {{ appName }} 
+        span(class="badge badge-pill badge-success") {{ todos.length }}
+    
+    #todo-list.row
+      .col-12.col-sm-6.col-md-8
+        .checkbox(ng-repeat="todo in todos")         
+          input(type="checkbox", ng-model="todo.isDone", ng-change="updateTodo(todo)") 
+          a(href, ng-click="deleteTodo(todo)")
+            i.fa.fa-times
+          a(href, ng-click="textBtnForm.$show()", ng-hide="textBtnForm.$visible")
+            i.fa.fa-edit
+          span(ng-class="{strike: todo.isDone}", editable-text="todo.text", e-form="textBtnForm", onaftersave="updateTodo(todo)")
+            | {{todo.text}}
+        p.text-center(ng-show="loading")
+          span.fa.fa-spinner.fa-spin.fa-3x  
+    #todo-form.row
+      .col-12.col-sm-6.col-md-8
+        form
+          .form-group
+            input(type="text",ng-model="formData.text" ,class="form-control input-lg text-center", placeholder="What do you want to do?")
+          button(type="submit", class="btn btn-primary btn-lg", ng-click="createTodo()", ng-disabled="!formData.text") Add

@@ -1,0 +1,25 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin-top: 30px;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#todo-list {
+  margin-bottom: 30px;
+}
+
+#todo-form {
+  margin-bottom: 50px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.strike {
+  text-decoration: line-through;
+}
